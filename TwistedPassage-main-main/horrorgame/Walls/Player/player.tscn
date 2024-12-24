@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://db3gkixugpbvs"]
+[gd_scene load_steps=12 format=3 uid="uid://db3gkixugpbvs"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ske10"]
 [ext_resource type="AudioStream" uid="uid://bbekxq3ochwch" path="res://materials/sounds/footstep-2.mp3" id="3_3w5nn"]
@@ -12,11 +12,13 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fi0dr"]
 radius = 0.412241
 
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_kg83u"]
+length = 0.5
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vqnp2"]
 
 [node name="player" type="CharacterBody3D"]
-floor_stop_on_slope = false
-platform_floor_layers = 4294967293
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.978771, 0)
 script = ExtResource("1_ske10")
 walk_footsteps = Array[AudioStream]([ExtResource("5_clgtd"), ExtResource("3_3w5nn"), ExtResource("4_wns3k"), ExtResource("5_lnvvr")])
 sprint_footsteps = Array[AudioStream]([ExtResource("5_clgtd"), ExtResource("3_3w5nn"), ExtResource("4_wns3k"), ExtResource("5_lnvvr")])
@@ -24,8 +26,11 @@ sprint_footsteps = Array[AudioStream]([ExtResource("5_clgtd"), ExtResource("3_3w
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_fi0dr")
 
+[node name="StepUp_F" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.476478, -0.505928)
+shape = SubResource("SeparationRayShape3D_kg83u")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_vqnp2")
 
@@ -50,9 +55,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 fov = 77.3366
 
 [node name="RayCast3D" type="RayCast3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, -7.93362e-08, -1, 0, 1.815, -4.37114e-08, 0, -0.212008, -0.00025256)
+transform = Transform3D(1, 0, 0, 0, -1.48619e-07, -1, 0, 3.4, -4.37114e-08, 0, -0.212008, -0.00025256)
 script = ExtResource("4_wub38")
 
 [node name="footstep_sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99637, 0)
 stream = ExtResource("5_clgtd")
 max_db = 1.0
+
+[node name="StepUp_R" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.476478, -0.505928)
+shape = SubResource("SeparationRayShape3D_kg83u")
+
+[node name="StepUp_L" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.476478, -0.505928)
+shape = SubResource("SeparationRayShape3D_kg83u")
+
+[node name="StairsBelowRayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(-0.450867, 0.0202239, 0.892586, 0.00698126, 6.42484, 0, -0.892564, 0.0400366, -0.450878, -0.0444418, -0.945, 0.0110297)
+target_position = Vector3(0, -0.3, 0)

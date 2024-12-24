@@ -12,6 +12,7 @@
 size = Vector3(1, 2.8913, 1.25684)
 
 [node name="monster" type="CharacterBody3D" node_paths=PackedStringArray("destinations") groups=["monster"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 safe_margin = 1.0
 script = ExtResource("1_l3c7x")
 destinations = [null]
@@ -22,7 +23,7 @@ sprint_footsteps = Array[AudioStream]([ExtResource("3_4cvja")])
 avoidance_enabled = true
 
 [node name="jumpscare" type="Camera3D" parent="."]
-transform = Transform3D(-0.997315, -0.00485378, -0.0730771, 0, 0.997801, -0.0662739, 0.0732382, -0.0660959, -0.995122, 0.000292111, 1.0193, -0.232143)
+transform = Transform3D(-0.997315, -0.0168484, -0.0712739, 0, 0.973179, -0.23005, 0.0732382, -0.229432, -0.970565, 0.00956841, 1.24322, -0.557767)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="jumpscare"]
 transform = Transform3D(1, -1.39698e-09, 0, 1.39698e-09, 1, -7.45058e-09, 0, 0, 1, 0.0169113, 0.434768, -0.259673)

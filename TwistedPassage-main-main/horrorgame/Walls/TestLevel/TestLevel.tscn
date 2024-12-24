@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://crnl7ap8h1dk4"]
+[gd_scene load_steps=80 format=3 uid="uid://crnl7ap8h1dk4"]
 
 [ext_resource type="PackedScene" uid="uid://c31hhjy0g4ehs" path="res://Walls/scenes/ui.tscn" id="1_a3pgh"]
 [ext_resource type="Script" path="res://Walls/TestLevel/world.gd" id="1_cjy1q"]
@@ -444,6 +444,8 @@ _data = {
 "scare_run1": SubResource("Animation_iwqsu")
 }
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yil5d"]
+
 [node name="World" type="Node3D"]
 script = ExtResource("1_cjy1q")
 
@@ -460,7 +462,7 @@ environment = SubResource("Environment_dxql7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.10263, 2.61379)
 
 [node name="monster" parent="." node_paths=PackedStringArray("destinations") instance=ExtResource("5_pxw5q")]
-transform = Transform3D(-0.992966, 0, 0.118404, 0, 1, 0, -0.118404, 0, -0.992966, 1.78148, 0.170341, 24.0677)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78148, 0.170341, 24.0677)
 safe_margin = 0.05
 scene_name = "death_2"
 destinations = [NodePath("../destinations/destination"), NodePath("../destinations/destination2"), NodePath("../destinations/destination3"), NodePath("../destinations/destination4"), NodePath("../destinations/destination5"), NodePath("../destinations/destination6"), NodePath("../destinations/destination7"), NodePath("../destinations/destination8")]
@@ -1152,6 +1154,10 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.56362, 0.0120072, 16.
 
 [node name="blood_pool3" parent="pool_blood" instance=ExtResource("53_s4pls")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.878564, 0.0120072, -19.2109)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7147, 1.38847, -20.812)
+mesh = SubResource("CapsuleMesh_yil5d")
 
 [connection signal="body_entered" from="scare_triggers/scare_trigger4" to="scare_triggers/scare_trigger4" method="trigger_entered"]
 [connection signal="body_entered" from="scare_triggers/scare_trigger3" to="scare_triggers/scare_trigger3" method="trigger_entered"]

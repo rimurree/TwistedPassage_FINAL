@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+@onready var _initial_separation_ray_dist = abs($StepUp_F.position.z)
 @export var WALKING_SPEED : float = 3.0
 @export var SPRINTING_SPEED : float = 5.0
 @export var JUMP_VELOCITY : float = 3
@@ -15,6 +15,7 @@ var sprint_drain_amount = 0.3
 var sprint_refresh_speed = 0.4
 var sprintslider 
 var rng
+var _last_xz_vel : Vector3 = Vector3(0,0,0)
 @export var walk_footsteps: Array[AudioStream]
 @export var sprint_footsteps: Array[AudioStream]
 
@@ -50,6 +51,53 @@ func _process(delta):
 			sprintslider.value = sprintslider.value + sprint_refresh_speed * delta
 		if sprintslider.value == sprintslider.max_value:
 			sprintslider.visible = false
+			
+# go down the stairs
+var _was_on_floor_last_frame = false
+var _snapped_to_stairs_last_from = false
+func _snap_down_to_stairs_check():
+	var did_snap = false
+	if not is_on_floor() and velocity.y <= 0 and (_was_on_floor_last_frame or _snapped_to_stairs_last_from) and $StairsBelowRayCast3D.is_colliding():
+		var body_test_result = PhysicsTestMotionResult3D.new()
+		var params = PhysicsTestMotionParameters3D.new()
+		var max_step_down = -0.5
+		params.from = self.global_transform
+		params.motion = Vector3(0, max_step_down, 0)
+		if PhysicsServer3D.body_test_motion(self.get_rid(), params, body_test_result):
+			var translate_y = body_test_result.get_travel().y
+			self.position.y += translate_y
+			apply_floor_snap()
+			did_snap = true
+			
+	_was_on_floor_last_frame = is_on_floor()
+	_snapped_to_stairs_last_from = did_snap
+	#
+func _rotate_step_up_separation_ray():
+	var xz_vel = velocity * Vector3(1,0,1)
+	
+	if xz_vel.length() < 0.1:
+		xz_vel = _last_xz_vel
+	else:
+		_last_xz_vel = xz_vel
+		
+	var xz_f_rays_pos = xz_vel.normalized() * _initial_separation_ray_dist
+	var target_f_pos = self.global_position + xz_f_rays_pos
+	
+	$StepUp_F.global_position.x = lerp($StepUp_F.global_position.x, target_f_pos.x, 1.2)
+	$StepUp_F.global_position.z = lerp($StepUp_F.global_position.z, target_f_pos.z, 1.2)
+	
+	var xz_l_rays_pos = xz_f_rays_pos.rotated(Vector3(0,1.0,0), deg_to_rad(-50))
+	var target_l_pos = self.global_position + xz_l_rays_pos
+	
+	$StepUp_L.global_position.x = lerp($StepUp_L.global_position.x, target_l_pos.x, 1.2)
+	$StepUp_L.global_position.z = lerp($StepUp_L.global_position.z, target_l_pos.z, 1.2)
+	
+	var xz_r_rays_pos = xz_f_rays_pos.rotated(Vector3(0,1.0,0), deg_to_rad(50))
+	var target_r_pos = self.global_position + xz_r_rays_pos
+	
+	$StepUp_R.global_position.x = lerp($StepUp_R.global_position.x, target_r_pos.x, 1.2)
+	$StepUp_R.global_position.z = lerp($StepUp_R.global_position.z, target_r_pos.z, 1.2)
+	
 	
 func _physics_process(delta):
 	
@@ -89,5 +137,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, CURRENT_SPEED)
 		velocity.z = move_toward(velocity.z, 0, CURRENT_SPEED)
-
+		
+	_rotate_step_up_separation_ray()
 	move_and_slide()
+	_snap_down_to_stairs_check()
