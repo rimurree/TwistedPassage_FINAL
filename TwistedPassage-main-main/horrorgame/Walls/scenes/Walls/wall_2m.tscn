@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=4 uid="uid://dqmlsl5iqa8wr"]
+
+[ext_resource type="Material" uid="uid://dtgl05jsrwndj" path="res://materials/materials/Wall_Mat.tres" id="1_skcyx"]
+[ext_resource type="Material" uid="uid://blmf5hwghq1ag" path="res://materials/materials/WallTrims_Mat.tres" id="2_yfpsi"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ovlwa"]
+_surfaces = [{
+"aabb": AABB(-0.999998, -0.125, -0.125, 2, 4, 0.250001),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AgABAAAAAgADAAEABgAFAAcABgAEAAUA"),
+"name": "Wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAAAAAAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAA//8AAAAA///+/wAA//8AAP7/AAD//////v8AAA==")
+}, {
+"aabb": AABB(-0.999998, 0.125, -0.19313, 2, 0.239389, 0.386256),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AQAFAAQAAQAAAAUAAwABAAIAAwAAAAEABwALAAYABwAKAAsACQAHAAYACQAIAAcA"),
+"name": "WallTrim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AABT6///AAD//1Pr//8AAP//AAD+/wAAAAAAAP7/AAD/////2NIAAAAA/v/Y0gAAAABT6wAAAAD//1PrAAAAAP//AAAAAAAAAAAAAAAAAAD/////Ji0AAAAA/v8mLQAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_or7bx"]
+resource_name = "RoomTiles_Wall_2m"
+_surfaces = [{
+"aabb": AABB(-0.999998, -0.125, -0.125, 2, 4, 0.250001),
+"attribute_data": PackedByteArray("////////AAD/f////38AAP///////wAA/3////9/AAA="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AgABAAAAAgADAAEABgAFAAcABgAEAAUA"),
+"material": ExtResource("1_skcyx"),
+"name": "Wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAAAA//8AAP//AAD/////AAAAAP///////wAA//8AAAAA//8AAAAA///+/wAA//8AAP7/AAD//////v8AAP9/////f////3////9//v//f/9//3//f/9//3//f/9/")
+}, {
+"aabb": AABB(-0.999998, 0.125, -0.19313, 2, 0.239389, 0.386256),
+"attribute_data": PackedByteArray("/z/7Af8/+wH/v/sB/7/7Af+//z//P/8//78dHf8/HR3/P/sB/z/7Af+/+wH/v/sB/7//P/8//z//vx0d/z8dHQ=="),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AwAHAAYAAwABAAcABQACAAQABQAAAAIACwAPAAkACwAOAA8ADQAKAAgADQAMAAoA"),
+"material": ExtResource("2_yfpsi"),
+"name": "WallTrim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AABT6///AIAAAFPr//9DS///U+v//wCA//9T6///Q0v//wAA/v8AgAAAAAD+/wCA/////9jSQ0sAAP7/2NJDSwAAU+sAAAAAAABT6wAAQ8v//1PrAAAAAP//U+sAAEPL//8AAAAAAAAAAAAAAAAAAP////8mLUPLAAD+/yYtQ8v/f///////f/9///////9//3////9///////9/////f/7//3////9//v//f////3/+//9//v//f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ovlwa")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yd16a"]
+data = PackedVector3Array(1, -0.125, -0.125, -1, 3.875, -0.125, -1, -0.125, -0.125, 1, -0.125, -0.125, 1, 3.875, -0.125, -1, 3.875, -0.125, 1, -0.125, 0.125, -1, 3.875, 0.125, 1, 3.875, 0.125, 1, -0.125, 0.125, -1, -0.125, 0.125, -1, 3.875, 0.125, 1, 0.3451, 0.1931, -1, 0.3644, 0.125, 1, 0.3644, 0.125, 1, 0.3451, 0.1931, -1, 0.3451, 0.1931, -1, 0.3644, 0.125, -1, 0.125, 0.1931, 1, 0.3451, 0.1931, 1, 0.125, 0.1931, -1, 0.125, 0.1931, -1, 0.3451, 0.1931, 1, 0.3451, 0.1931, 1, 0.3451, -0.1931, -1, 0.3644, -0.125, -1, 0.3451, -0.1931, 1, 0.3451, -0.1931, 1, 0.3644, -0.125, -1, 0.3644, -0.125, -1, 0.125, -0.1931, 1, 0.3451, -0.1931, -1, 0.3451, -0.1931, -1, 0.125, -0.1931, 1, 0.125, -0.1931, 1, 0.3451, -0.1931)
+
+[node name="Wall_2m" type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_or7bx")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_yd16a")

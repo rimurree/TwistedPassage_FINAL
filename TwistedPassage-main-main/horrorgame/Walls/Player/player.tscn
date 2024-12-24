@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://db3gkixugpbvs"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ske10"]
+[ext_resource type="AudioStream" uid="uid://bbekxq3ochwch" path="res://materials/sounds/footstep-2.mp3" id="3_3w5nn"]
+[ext_resource type="Script" path="res://scripts/flashlight.gd" id="3_gsojm"]
+[ext_resource type="AudioStream" uid="uid://c3fm7c2yqsys6" path="res://materials/sounds/flaslight_sound.mp3" id="4_mivjr"]
+[ext_resource type="AudioStream" uid="uid://ddxvxf5lc4njm" path="res://materials/sounds/footstep-3.mp3" id="4_wns3k"]
+[ext_resource type="Script" path="res://scripts/ray_cast_3d.gd" id="4_wub38"]
+[ext_resource type="AudioStream" uid="uid://t5eut7hasp1h" path="res://materials/sounds/footstep-1.mp3" id="5_clgtd"]
+[ext_resource type="AudioStream" uid="uid://t8asotaso25f" path="res://materials/sounds/footstep-4.mp3" id="5_lnvvr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fi0dr"]
+radius = 0.412241
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vqnp2"]
+
+[node name="player" type="CharacterBody3D"]
+floor_stop_on_slope = false
+platform_floor_layers = 4294967293
+script = ExtResource("1_ske10")
+walk_footsteps = Array[AudioStream]([ExtResource("5_clgtd"), ExtResource("3_3w5nn"), ExtResource("4_wns3k"), ExtResource("5_lnvvr")])
+sprint_footsteps = Array[AudioStream]([ExtResource("5_clgtd"), ExtResource("3_3w5nn"), ExtResource("4_wns3k"), ExtResource("5_lnvvr")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_fi0dr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_vqnp2")
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.590337, -0.141475)
+
+[node name="flashlight" type="SpotLight3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.291002, -0.557168, -0.26002)
+visible = false
+light_energy = 3.0
+spot_range = 10.0
+spot_attenuation = 2.0
+spot_angle = 30.0
+spot_angle_attenuation = 2.0
+script = ExtResource("3_gsojm")
+
+[node name="on_off" type="AudioStreamPlayer" parent="head/flashlight"]
+stream = ExtResource("4_mivjr")
+
+[node name="Camera3D" type="Camera3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+fov = 77.3366
+
+[node name="RayCast3D" type="RayCast3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, -7.93362e-08, -1, 0, 1.815, -4.37114e-08, 0, -0.212008, -0.00025256)
+script = ExtResource("4_wub38")
+
+[node name="footstep_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_clgtd")
+max_db = 1.0

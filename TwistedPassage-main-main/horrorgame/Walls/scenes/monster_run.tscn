@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://0cm4utcd310j"]
+
+[ext_resource type="Script" path="res://scripts/monster.gd" id="1_l3c7x"]
+[ext_resource type="AudioStream" uid="uid://ckpn61klvwvn8" path="res://materials/sounds/monster_walk.mp3" id="2_wxqo1"]
+[ext_resource type="AudioStream" uid="uid://c16bv264v5vgg" path="res://materials/sounds/run.mp3" id="3_4cvja"]
+[ext_resource type="AudioStream" uid="uid://dbousnugtqkd6" path="res://materials/sounds/fuzzy-jumpscare.mp3" id="5_fsyha"]
+[ext_resource type="AudioStream" uid="uid://c4ixjhah7paml" path="res://materials/sounds/breathing-fast.mp3" id="6_axfyy"]
+[ext_resource type="AudioStream" uid="uid://djl6e1wkx2uy4" path="res://materials/sounds/scare_run.mp3" id="6_iw6fp"]
+[ext_resource type="PackedScene" uid="uid://wss8jwwtxady" path="res://Walls/scenes/Models/monster/monster.tscn" id="6_x2jts"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pgxbc"]
+size = Vector3(1, 2.8913, 1.25684)
+
+[node name="monster" type="CharacterBody3D" node_paths=PackedStringArray("destinations") groups=["monster"]]
+safe_margin = 1.0
+script = ExtResource("1_l3c7x")
+destinations = [null]
+walk_footsteps = Array[AudioStream]([ExtResource("2_wxqo1"), ExtResource("2_wxqo1"), ExtResource("2_wxqo1"), ExtResource("2_wxqo1")])
+sprint_footsteps = Array[AudioStream]([ExtResource("3_4cvja")])
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+
+[node name="jumpscare" type="Camera3D" parent="."]
+transform = Transform3D(-0.997315, -0.00485378, -0.0730771, 0, 0.997801, -0.0662739, 0.0732382, -0.0660959, -0.995122, 0.000292111, 1.0193, -0.232143)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="jumpscare"]
+transform = Transform3D(1, -1.39698e-09, 0, 1.39698e-09, 1, -7.45058e-09, 0, 0, 1, 0.0169113, 0.434768, -0.259673)
+light_color = Color(0.772549, 0.129412, 0.152941, 1)
+omni_range = 1.0
+
+[node name="footsteps" type="AudioStreamPlayer3D" parent="."]
+
+[node name="jumpscare2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fsyha")
+volume_db = 2.049
+
+[node name="chase_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_iw6fp")
+volume_db = 1.537
+
+[node name="breathing_fast" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_axfyy")
+volume_db = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.815119, 0.0176985)
+shape = SubResource("BoxShape3D_pgxbc")
+
+[node name="monster" parent="." instance=ExtResource("6_x2jts")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../jumpscare")
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="pick_new_destination"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="on_navigation_agent_3d_velocity_computed"]

@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b2fhm8w3q0v8n"]
+
+[ext_resource type="Texture2D" uid="uid://b2wp34jbeqyyy" path="res://Assets/BackroomsLikeAssetPack/Walls/Textures/OfficeCeiling/BASE COLOR_OfficeCeiling.png" id="1_e0a6i"]
+[ext_resource type="Texture2D" uid="uid://bnfjie4r335mq" path="res://Assets/BackroomsLikeAssetPack/Walls/Textures/OfficeCeiling/EMIT_OfficeCeiling.png" id="2_0h6dy"]
+[ext_resource type="Texture2D" uid="uid://dft8jd145213l" path="res://Assets/BackroomsLikeAssetPack/Walls/Textures/OfficeCeiling/NORMAL_OfficeCeiling.png" id="3_1dkp1"]
+[ext_resource type="Texture2D" uid="uid://bp4ghti6jor7s" path="res://Assets/BackroomsLikeAssetPack/Walls/Textures/OfficeCeiling/MRAO_OfficeCeiling.exr" id="4_pckjp"]
+
+[resource]
+albedo_texture = ExtResource("1_e0a6i")
+roughness_texture = ExtResource("4_pckjp")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_energy_multiplier = 5.0
+emission_texture = ExtResource("2_0h6dy")
+normal_enabled = true
+normal_texture = ExtResource("3_1dkp1")
+ao_enabled = true

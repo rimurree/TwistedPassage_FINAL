@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://da0yq721xo5n3"]
+
+[ext_resource type="PackedScene" uid="uid://cwbp3kwf6skw5" path="res://Walls/scenes/Models/doll/untitled.glb" id="1_6ajl4"]
+
+[node name="untitled" instance=ExtResource("1_6ajl4")]
+
+[node name="Doll_obj_cleaner_materialmerger_gles" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0529119, 0)
+
+[node name="Object_2" parent="Doll_obj_cleaner_materialmerger_gles" index="0"]
+transform = Transform3D(1.29, 0, 0, 0, 0, 0.996916, 0, -1, 0, 0, 0.0176818, -0.00131937)

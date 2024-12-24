@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=4 uid="uid://l71w1h8gewn"]
+
+[ext_resource type="Material" uid="uid://xv6ew4o8fkg7" path="res://materials/materials/PropSet_Mat.tres" id="1_w584e"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5yhbj"]
+_surfaces = [{
+"aabb": AABB(-0.1, -0.15, -1.56958e-08, 0.2, 0.3, 0.00501997),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("BQAGAAcABQAEAAYABQAAAAQABQABAAAABAACAAYABAAAAAIABgADAAcABgACAAMABwABAAUABwADAAEA"),
+"lods": [0.0044772, PackedByteArray("AQACAAMAAQAEAAIAAQAAAAQABAAAAAIA")],
+"name": "PropSet",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP//AAAAAP//AAAAAAAAAAAAAAAAAABk+Zj7/v8AAJoGmPv+/wAAZPlmBP//AACaBmYE/v8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ro1v4"]
+resource_name = "Props_Props_PlugsB"
+_surfaces = [{
+"aabb": AABB(-0.1, -0.15, -1.56958e-08, 0.2, 0.3, 0.00501997),
+"attribute_data": PackedByteArray("/78AAP+/AAD/v/8f/7//H//vAAD/7wAA/+//H//v/x/SwNMA0sDTANLA0wDSwCwf0sAsH9LALB8r79MAK+/TACvv0wAr7ywfK+8sHyvvLB//vwAA/7//H//vAAD/7/8f0sDTANLA0wA="),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("DAAPABMADAAIAA8ADQAAAAkADQADAAAACgAFABAACgABAAUADgAHABIADgAEAAcAEQACAAsAEQAGAAIA"),
+"lods": [0.0044772, PackedByteArray("FQAWABcAFQAYABYAFQAAABgAGQAUABYA")],
+"material": ExtResource("1_w584e"),
+"name": "PropSet",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 26,
+"vertex_data": PackedByteArray("/////wAAysX/////AADJxQAA//8AAMnFAAD//wAAysX//wAAAADJxf//AAAAAMnFAAAAAAAAycUAAAAAAADJxWT5mPv+//+/ZPmY+/7/ysVk+Zj7/v/JxZoGmPv+/8nFmgaY+/7//7+aBpj7/v/KxWT5ZgT//8nFZPlmBP///79k+WYE///JxZoGZgT+/8nFmgZmBP7/ycWaBmYE/v//v/////8AAMTRAAD//wAAo8D//wAAAADWuwAAAAAAAP+/ZPmY+/7/fsFk+Zj7/v/JxbCcsJywnE5jTmOwnLCcsJxOY05jsJxOY05jsJxOY05j/3//f7CcsJywnE5jTmOwnP9//3+wnLCcTmNOY/9//3+wnE5jTmOwnE5jTmP/f/9/Jaf/fyaO/3/einFV/3//f0WU/3+wnE5j")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5yhbj")
+
+[node name="Props_PlugsB" type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_ro1v4")
+skeleton = NodePath("")

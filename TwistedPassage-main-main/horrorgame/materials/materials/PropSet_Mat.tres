@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://xv6ew4o8fkg7"]
+
+[ext_resource type="Texture2D" uid="uid://byq0ga1ourb0p" path="res://Walls/Textures/PropSet/Base Color_PropSet.png" id="1_u822x"]
+[ext_resource type="Texture2D" uid="uid://bvpnnooqugmhn" path="res://Walls/Textures/PropSet/MRAo_PropSet.exr" id="2_fvank"]
+[ext_resource type="Texture2D" uid="uid://b4gfsulfqbfvs" path="res://Walls/Textures/PropSet/Emit_PropSet.png" id="3_3wn63"]
+[ext_resource type="Texture2D" uid="uid://oxvl4kgv7kxc" path="res://Walls/Textures/PropSet/NORMAL_PropSet.png" id="3_lfexf"]
+
+[resource]
+albedo_texture = ExtResource("1_u822x")
+metallic = 1.0
+metallic_texture = ExtResource("2_fvank")
+roughness_texture = ExtResource("2_fvank")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("3_3wn63")
+normal_enabled = true
+normal_texture = ExtResource("3_lfexf")
+ao_enabled = true
+ao_texture = ExtResource("2_fvank")
+ao_texture_channel = 2

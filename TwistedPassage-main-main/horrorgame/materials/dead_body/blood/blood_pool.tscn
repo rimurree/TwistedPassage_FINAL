@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d042sjrj5x6bo"]
+
+[ext_resource type="PackedScene" uid="uid://bsw1iwxsrskxu" path="res://materials/dead_body/blood/blood_spattered.glb" id="1_e0s7v"]
+
+[node name="blood_pool" instance=ExtResource("1_e0s7v")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

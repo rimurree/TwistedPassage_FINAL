@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://b38akxt43m20e"]
+
+[ext_resource type="Texture2D" uid="uid://ejy8xek61frp" path="res://Assets/BackroomsLikeAssetPack/Walls/Textures/Concrete_4/BASE COLOR_Concrete_4.png" id="1_7ia2x"]
+[ext_resource type="Texture2D" uid="uid://b8sd0tw4o2mbh" path="res://Assets/BackroomsLikeAssetPack/Walls/Textures/Concrete_4/MRAO_Concrete_4.exr" id="2_5fbd3"]
+[ext_resource type="Texture2D" uid="uid://dracein5e1ahi" path="res://Assets/BackroomsLikeAssetPack/Walls/Textures/Concrete_4/NORMAL_Concrete_4.png" id="3_megcy"]
+
+[resource]
+albedo_texture = ExtResource("1_7ia2x")
+roughness_texture = ExtResource("2_5fbd3")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_megcy")
+ao_enabled = true
+ao_texture = ExtResource("2_5fbd3")
+ao_texture_channel = 2
