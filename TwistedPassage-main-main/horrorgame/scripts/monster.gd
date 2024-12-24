@@ -142,7 +142,7 @@ func _physics_process(delta):
 					monster_anim.play("Attack") 
 				$jumpscare.current = true
 				await get_tree().create_timer(jumpscareTime, false).timeout
-				get_tree().change_scene_to_file("res://scene/" + scene_name + ".tscn")
+				get_tree().change_scene_to_file("res://scenes/" + scene_name + ".tscn")
 				
 func update_target_location(target_location):
 	$NavigationAgent3D.target_position = target_location
