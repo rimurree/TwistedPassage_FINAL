@@ -79,12 +79,10 @@ func _process(delta):
 			monster_anim.play("Idle")  # Play idle animation when stationary
 		return  # Skip processing while waiting or invisible
 		
-	if chasing == true && !$chase_sound.playing && !$breathing_fast.playing: # changes
+	if chasing == true && !$chase_sound.playing: # changes
 		$chase_sound.play()
-		$breathing_fast.play() # changes
-	if chasing == false && $chase_sound.playing && !$breathing_fast.playing: # changes
+	if chasing == false && $chase_sound.playing: # changes
 		$chase_sound.stop()
-		$breathing_fast.stop() # changes
 	if chasing  == false && SPEED > 0:
 		if !$footsteps.playing:
 			var num = rng.randi_range(0, walk_footsteps.size() - 1)
@@ -140,6 +138,7 @@ func _physics_process(delta):
 				caught = true
 				if monster_anim && caught: #changes
 					monster_anim.play("Attack") 
+				$AnimationPlayer.play("jumpscare_anim")
 				$jumpscare.current = true
 				await get_tree().create_timer(jumpscareTime, false).timeout
 				get_tree().change_scene_to_file("res://scenes/" + scene_name + ".tscn")
