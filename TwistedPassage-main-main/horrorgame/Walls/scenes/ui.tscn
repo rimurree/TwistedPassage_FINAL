@@ -51,7 +51,7 @@ text = "Press [F] to pick up"
 scroll_active = false
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0, 0, 0, 0.2)
+modulate = Color(0.982343, 0.982342, 0.982342, 0.427451)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.408
