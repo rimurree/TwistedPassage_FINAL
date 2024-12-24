@@ -62,7 +62,7 @@ ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 sky_material = SubResource("ProceduralSkyMaterial_5wg3q")
 
 [sub_resource type="Environment" id="Environment_dxql7"]
-background_mode = 2
+background_mode = 1
 sky = SubResource("Sky_labv7")
 ambient_light_color = Color(0.327579, 0.500843, 0.686948, 1)
 ssao_enabled = true

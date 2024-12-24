@@ -130,7 +130,7 @@ func _physics_process(delta):
 		rotation.y = look_dir
 		if chasing == true:
 			distance = player.global_transform.origin.distance_to(global_transform.origin)
-			if player_distance <= 1 && caught == false:
+			if player_distance <= 2 && caught == false:
 				player.visible = false
 				if !$jumpscare2.playing:
 					$jumpscare2.play()
@@ -141,7 +141,7 @@ func _physics_process(delta):
 				$AnimationPlayer.play("jumpscare_anim")
 				$jumpscare.current = true
 				await get_tree().create_timer(jumpscareTime, false).timeout
-				get_tree().change_scene_to_file("res://scenes/" + scene_name + ".tscn")
+				get_tree().change_scene_to_file("res://Walls/scenes/" + scene_name + ".tscn")
 				
 func update_target_location(target_location):
 	$NavigationAgent3D.target_position = target_location

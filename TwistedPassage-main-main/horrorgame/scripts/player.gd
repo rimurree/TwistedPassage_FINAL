@@ -83,20 +83,40 @@ func _rotate_step_up_separation_ray():
 	var xz_f_rays_pos = xz_vel.normalized() * _initial_separation_ray_dist
 	var target_f_pos = self.global_position + xz_f_rays_pos
 	
-	$StepUp_F.global_position.x = lerp($StepUp_F.global_position.x, target_f_pos.x, 1.2)
-	$StepUp_F.global_position.z = lerp($StepUp_F.global_position.z, target_f_pos.z, 1.2)
+	$StepUp_F.global_position.x = lerp($StepUp_F.global_position.x, target_f_pos.x, 1)
+	$StepUp_F.global_position.z = lerp($StepUp_F.global_position.z, target_f_pos.z, 1)
 	
 	var xz_l_rays_pos = xz_f_rays_pos.rotated(Vector3(0,1.0,0), deg_to_rad(-50))
 	var target_l_pos = self.global_position + xz_l_rays_pos
 	
-	$StepUp_L.global_position.x = lerp($StepUp_L.global_position.x, target_l_pos.x, 1.2)
-	$StepUp_L.global_position.z = lerp($StepUp_L.global_position.z, target_l_pos.z, 1.2)
+	$StepUp_L.global_position.x = lerp($StepUp_L.global_position.x, target_l_pos.x, 1)
+	$StepUp_L.global_position.z = lerp($StepUp_L.global_position.z, target_l_pos.z, 1)
 	
 	var xz_r_rays_pos = xz_f_rays_pos.rotated(Vector3(0,1.0,0), deg_to_rad(50))
 	var target_r_pos = self.global_position + xz_r_rays_pos
 	
-	$StepUp_R.global_position.x = lerp($StepUp_R.global_position.x, target_r_pos.x, 1.2)
-	$StepUp_R.global_position.z = lerp($StepUp_R.global_position.z, target_r_pos.z, 1.2)
+	$StepUp_R.global_position.x = lerp($StepUp_R.global_position.x, target_r_pos.x, 1)
+	$StepUp_R.global_position.z = lerp($StepUp_R.global_position.z, target_r_pos.z, 1)
+	
+	# To prevent character from running up walls, we do a check for how steep
+	# the slope in contact with our separation rays is
+	$StepUp_F/RayCast3D.force_raycast_update()
+	$StepUp_L/RayCast3D.force_raycast_update()
+	$StepUp_R/RayCast3D.force_raycast_update()
+	
+	var max_slope_ang_dot = Vector3(0,1,0).rotated(Vector3(1.0,0,0), self.floor_max_angle).dot(Vector3(0,1,0))
+	var any_too_steep = false
+	
+	if $StepUp_F/RayCast3D.is_colliding() and $StepUp_F/RayCast3D.get_collision_normal().dot(Vector3(0,1,0)) < max_slope_ang_dot:
+		any_too_steep = true
+	if $StepUp_L/RayCast3D.is_colliding() and $StepUp_L/RayCast3D.get_collision_normal().dot(Vector3(0,1,0)) < max_slope_ang_dot:
+		any_too_steep = true
+	if $StepUp_R/RayCast3D.is_colliding() and $StepUp_R/RayCast3D.get_collision_normal().dot(Vector3(0,1,0)) < max_slope_ang_dot:
+		any_too_steep = true
+	
+	$StepUp_F.disabled = any_too_steep
+	$StepUp_L.disabled = any_too_steep
+	$StepUp_R.disabled = any_too_steep
 	
 	
 func _physics_process(delta):

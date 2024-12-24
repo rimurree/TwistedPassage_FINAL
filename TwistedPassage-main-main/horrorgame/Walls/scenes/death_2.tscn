@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://daanb5f053xs8" path="res://materials/sounds/hover.mp3" id="4_v54vb"]
 [ext_resource type="AudioStream" uid="uid://bep7488gseuoh" path="res://materials/sounds/lobby.mp3" id="5_o10u7"]
 
-[node name="death2" type="Control"]
+[node name="death2" type="Control" node_paths=PackedStringArray("background_music")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dfugi")
+background_music = NodePath("Lobby")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
