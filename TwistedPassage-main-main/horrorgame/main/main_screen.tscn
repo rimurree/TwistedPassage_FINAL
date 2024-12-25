@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://bckil40xf14xq"]
+
+[ext_resource type="Script" path="res://main/scripts/main_screen.gd" id="1_qh33i"]
+[ext_resource type="Texture2D" uid="uid://du70tkceoowco" path="res://main/textures/logo.png" id="2_vnka7"]
+[ext_resource type="FontFile" uid="uid://coben8apb0s5d" path="res://map_b/materials/NoScary-regular.ttf" id="3_v82gg"]
+[ext_resource type="AudioStream" uid="uid://bep7488gseuoh" path="res://map_b/materials/sounds/lobby.mp3" id="4_bnkdd"]
+[ext_resource type="AudioStream" uid="uid://d4cd7rmdi13gi" path="res://map_b/materials/sounds/heartbeat.mp3" id="5_lo3xg"]
+[ext_resource type="AudioStream" uid="uid://daanb5f053xs8" path="res://map_b/materials/sounds/hover.mp3" id="6_ff6rf"]
+
+[node name="main_screen" type="Control" node_paths=PackedStringArray("bg_music")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qh33i")
+bg_music = NodePath("Lobby")
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1166.0
+offset_bottom = 660.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 3.0
+offset_right = 1090.19
+offset_bottom = 600.0
+texture = ExtResource("2_vnka7")
+expand_mode = 3
+
+[node name="Level1" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.317
+anchor_top = 0.775
+anchor_right = 0.317
+anchor_bottom = 0.775
+offset_left = -83.184
+offset_top = -27.2
+offset_right = 82.816
+offset_bottom = 26.8
+theme_override_colors/font_hover_pressed_color = Color(0.73959, 0.00133754, 0.000733898, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_v82gg")
+theme_override_font_sizes/font_size = 45
+text = "RED MAZE"
+flat = true
+
+[node name="Level2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.716
+anchor_top = 0.778
+anchor_right = 0.716
+anchor_bottom = 0.778
+offset_left = -98.832
+offset_top = -27.144
+offset_right = 98.168
+offset_bottom = 26.856
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_v82gg")
+theme_override_font_sizes/font_size = 45
+text = "OFFICE SPACE"
+flat = true
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.518
+anchor_top = 0.897
+anchor_right = 0.518
+anchor_bottom = 0.897
+offset_left = -30.736
+offset_top = -27.256
+offset_right = 30.264
+offset_bottom = 26.744
+theme_override_colors/font_hover_pressed_color = Color(0.73959, 0.00133754, 0.000733898, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_v82gg")
+theme_override_font_sizes/font_size = 45
+text = "Quit"
+flat = true
+
+[node name="Lobby" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_bnkdd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 12.0
+offset_top = 624.0
+offset_right = 342.0
+offset_bottom = 688.0
+theme_override_font_sizes/normal_font_size = 13
+text = "Developed by Rica Baguhin | Nino Piedad"
+
+[node name="PressSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lo3xg")
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ff6rf")
+
+[connection signal="mouse_entered" from="Level1" to="." method="_on_button_hovered"]
+[connection signal="pressed" from="Level1" to="." method="level1"]
+[connection signal="mouse_entered" from="Level2" to="." method="_on_button_hovered"]
+[connection signal="pressed" from="Level2" to="." method="level2"]
+[connection signal="mouse_entered" from="exit" to="." method="_on_button_hovered"]
+[connection signal="pressed" from="exit" to="." method="_on_quit_button_pressed"]

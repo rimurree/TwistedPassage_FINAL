@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://bunaxo50pluny"]
+
+[ext_resource type="Script" path="res://main/scripts/main_menu.gd" id="1_b7skr"]
+[ext_resource type="Texture2D" uid="uid://du70tkceoowco" path="res://main/textures/logo.png" id="2_rsrdh"]
+[ext_resource type="FontFile" uid="uid://coben8apb0s5d" path="res://map_b/materials/NoScary-regular.ttf" id="3_3s1bn"]
+[ext_resource type="AudioStream" uid="uid://bep7488gseuoh" path="res://map_b/materials/sounds/lobby.mp3" id="4_o6y2j"]
+[ext_resource type="AudioStream" uid="uid://d4cd7rmdi13gi" path="res://map_b/materials/sounds/heartbeat.mp3" id="5_y316s"]
+[ext_resource type="AudioStream" uid="uid://daanb5f053xs8" path="res://map_b/materials/sounds/hover.mp3" id="5_yg15o"]
+
+[node name="main_menu" type="Control" node_paths=PackedStringArray("bg_music")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b7skr")
+bg_music = NodePath("Lobby")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+color = Color(0, 0, 0, 1)
+
+[node name="logo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 16.0
+offset_right = 994.0
+offset_bottom = 501.0
+texture = ExtResource("2_rsrdh")
+expand_mode = 3
+
+[node name="play_game" type="Button" parent="."]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 422.0
+offset_right = 657.0
+offset_bottom = 485.0
+theme_override_colors/font_hover_pressed_color = Color(0.737255, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.737255, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3s1bn")
+theme_override_font_sizes/font_size = 40
+text = "Play"
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 514.0
+offset_right = 658.0
+offset_bottom = 577.0
+theme_override_colors/font_hover_pressed_color = Color(0.737255, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.737255, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3s1bn")
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 612.0
+offset_right = 338.0
+offset_bottom = 676.0
+text = "Developed by Rica Baguhin | Nino Piedad"
+
+[node name="Lobby" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_o6y2j")
+
+[node name="press" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_y316s")
+
+[node name="hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_yg15o")
+
+[connection signal="mouse_entered" from="play_game" to="." method="_on_button_hovered"]
+[connection signal="pressed" from="play_game" to="." method="play"]
+[connection signal="mouse_entered" from="quit" to="." method="_on_button_hovered"]
+[connection signal="pressed" from="quit" to="." method="quit"]

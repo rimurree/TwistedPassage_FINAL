@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjtjo1t2d6qqu"]
+
+[ext_resource type="Script" path="res://map_b/scripts/menu.gd" id="1_gclcc"]
+[ext_resource type="FontFile" uid="uid://coben8apb0s5d" path="res://map_b/materials/NoScary-regular.ttf" id="2_di8sa"]
+[ext_resource type="AudioStream" uid="uid://bep7488gseuoh" path="res://map_b/materials/sounds/lobby.mp3" id="3_607h5"]
+[ext_resource type="AudioStream" uid="uid://d4cd7rmdi13gi" path="res://map_b/materials/sounds/heartbeat.mp3" id="4_rpkmf"]
+[ext_resource type="AudioStream" uid="uid://daanb5f053xs8" path="res://map_b/materials/sounds/hover.mp3" id="5_ncr20"]
+
+[node name="Victory" type="Control" node_paths=PackedStringArray("background_music")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gclcc")
+background_music = NodePath("Lobby")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 454.0
+offset_right = 745.0
+offset_bottom = 539.0
+theme_override_colors/font_hover_pressed_color = Color(0.635294, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.635294, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_di8sa")
+theme_override_font_sizes/font_size = 30
+text = "Back to Main Menu"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 158.0
+offset_right = 1061.0
+offset_bottom = 443.0
+theme_override_colors/font_color = Color(0.635294, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_di8sa")
+theme_override_font_sizes/font_size = 50
+text = "Congratulations! You have escaped the darkness of Nyxvour. But remember, not all who enter find their way out. Will you dare to return?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Lobby" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_607h5")
+
+[node name="press" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rpkmf")
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ncr20")
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_hovered"]
+[connection signal="pressed" from="Button" to="." method="to_menu"]

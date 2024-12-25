@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl6llh2ta3e87"]
+
+[ext_resource type="PackedScene" uid="uid://dhja50upw8n0w" path="res://Walls/scenes/Models/monster/monster2/total_horror.glb" id="1_j8yag"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_j8yag")]

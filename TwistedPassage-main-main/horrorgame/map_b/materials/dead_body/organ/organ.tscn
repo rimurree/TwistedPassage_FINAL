@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://de5xu42d2dlhl"]
+
+[ext_resource type="PackedScene" uid="uid://dkgqbm3bu0w51" path="res://map_b/materials/dead_body/organ/gore.glb" id="1_4gakx"]
+
+[node name="organ" instance=ExtResource("1_4gakx")]

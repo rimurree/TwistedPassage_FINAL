@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgixmt0kj7gjh"]
+
+[ext_resource type="PackedScene" uid="uid://bau3a554p7ygd" path="res://map_b/materials/dead_body/dead_body_from_resident_evil_orc.glb" id="1_t1uk5"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_t1uk5")]

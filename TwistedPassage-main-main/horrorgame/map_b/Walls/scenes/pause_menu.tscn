@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://de13jp1tb6lnh"]
+
+[ext_resource type="Script" path="res://map_b/scripts/pause_menu.gd" id="1_l5hys"]
+[ext_resource type="FontFile" uid="uid://c3lvkh2asrhsf" path="res://map_b/materials/Dead Wood.otf" id="2_xodf3"]
+[ext_resource type="FontFile" uid="uid://coben8apb0s5d" path="res://map_b/materials/NoScary-regular.ttf" id="3_dhmqy"]
+[ext_resource type="AudioStream" uid="uid://d4cd7rmdi13gi" path="res://map_b/materials/sounds/heartbeat.mp3" id="4_k5px1"]
+[ext_resource type="AudioStream" uid="uid://daanb5f053xs8" path="res://map_b/materials/sounds/hover.mp3" id="5_ht43s"]
+
+[node name="pause_menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l5hys")
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -6.495
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.211765)
+
+[node name="pause" type="RichTextLabel" parent="."]
+modulate = Color(0.645833, 0.111156, 0.0725789, 1)
+layout_mode = 0
+offset_left = 155.0
+offset_top = 124.0
+offset_right = 1176.0
+offset_bottom = 279.0
+theme_override_fonts/normal_font = ExtResource("2_xodf3")
+theme_override_font_sizes/normal_font_size = 120
+text = "The game is now paused."
+
+[node name="resume" type="Button" parent="."]
+modulate = Color(0.635417, 0.0374849, 0, 1)
+layout_mode = 0
+offset_left = 447.0
+offset_top = 299.0
+offset_right = 733.0
+offset_bottom = 382.0
+theme_override_fonts/font = ExtResource("3_dhmqy")
+theme_override_font_sizes/font_size = 70
+text = "Resume"
+
+[node name="back_menu" type="Button" parent="."]
+modulate = Color(0.635417, 0.0374849, 0, 1)
+layout_mode = 0
+offset_left = 450.0
+offset_top = 398.0
+offset_right = 734.0
+offset_bottom = 481.0
+theme_override_fonts/font = ExtResource("3_dhmqy")
+theme_override_font_sizes/font_size = 70
+text = "Back to menu
+"
+
+[node name="quit_button" type="Button" parent="."]
+modulate = Color(0.635417, 0.0374849, 0, 1)
+layout_mode = 0
+offset_left = 451.0
+offset_top = 497.0
+offset_right = 735.0
+offset_bottom = 580.0
+theme_override_fonts/font = ExtResource("3_dhmqy")
+theme_override_font_sizes/font_size = 70
+text = "Quit"
+
+[node name="PressSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_k5px1")
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ht43s")
+
+[connection signal="mouse_entered" from="resume" to="." method="_on_button_hovered"]
+[connection signal="pressed" from="resume" to="." method="resume"]
+[connection signal="mouse_entered" from="back_menu" to="." method="_on_button_hovered"]
+[connection signal="pressed" from="back_menu" to="." method="back_to_menu"]
+[connection signal="mouse_entered" from="quit_button" to="." method="_on_button_hovered"]
+[connection signal="pressed" from="quit_button" to="." method="quit_game"]
