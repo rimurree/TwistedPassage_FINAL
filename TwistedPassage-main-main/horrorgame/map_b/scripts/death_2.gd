@@ -28,7 +28,7 @@ func _on_main_menu_pressed():
 	$PressSound.play()  # Play press sound
 	background_music.stop()  # Stop the background music
 	GameManager.reset() #resets the keys collected
-	#get_tree().change_scene_to_file("res://map_b/Walls/TestLevel/TestLevel.tscn")
+	get_tree().change_scene_to_file("res://main/main_menu.tscn")
 
 # Called when the restart button is pressed
 func _on_restart_pressed():

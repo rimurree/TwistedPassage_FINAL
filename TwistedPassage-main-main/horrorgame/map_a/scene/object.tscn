@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://3jppswlqquoe"]
+
+[ext_resource type="Script" path="res://map_a/scripts/object.gd" id="1_tw0xk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3qlaa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52hun"]
+albedo_color = Color(0, 1, 0.233952, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5o5sj"]
+
+[node name="object" type="StaticBody3D"]
+script = ExtResource("1_tw0xk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.678347, 0, 0, 0, 0.726746, 0, 0, 0, 1, 0, 0.00927126, 0)
+shape = SubResource("SphereShape3D_3qlaa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00760958, 0.999971, 0, -0.999971, -0.00760958, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_52hun")
+mesh = SubResource("SphereMesh_5o5sj")

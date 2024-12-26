@@ -4,7 +4,7 @@ extends MeshInstance3D
 @export var is_open = false
 @onready var lock_text 
 @onready var bg
-@onready var int_text = get_node('/root/World/UI/interact_text')
+@onready var int_text = get_node('/root/World/interface/interact')
 var anim_player
 var lock_sound: AudioStreamPlayer3D
 var open_sound: AudioStreamPlayer3D

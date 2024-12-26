@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://c80e52yb6oayw"]
+
+[ext_resource type="Script" path="res://map_a/scripts/death_scene.gd" id="1_6e56q"]
+[ext_resource type="FontFile" uid="uid://c3lvkh2asrhsf" path="res://map_b/materials/Dead Wood.otf" id="2_udvbj"]
+[ext_resource type="FontFile" uid="uid://coben8apb0s5d" path="res://map_b/materials/NoScary-regular.ttf" id="2_xsm3t"]
+[ext_resource type="AudioStream" uid="uid://d4cd7rmdi13gi" path="res://map_b/materials/sounds/heartbeat.mp3" id="3_xmlph"]
+[ext_resource type="AudioStream" uid="uid://daanb5f053xs8" path="res://map_b/materials/sounds/hover.mp3" id="4_v54vb"]
+[ext_resource type="AudioStream" uid="uid://bep7488gseuoh" path="res://map_b/materials/sounds/lobby.mp3" id="5_o10u7"]
+
+[node name="Death" type="Control" node_paths=PackedStringArray("background_music")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6e56q")
+background_music = NodePath("Lobby")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 106.0
+offset_right = 1016.0
+offset_bottom = 537.0
+theme_override_colors/font_color = Color(0.635294, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_udvbj")
+theme_override_font_sizes/font_size = 60
+text = "You have been caught by Nyxvour. The darkness claims another victim..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="bck" type="Button" parent="."]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 544.0
+offset_right = 292.0
+offset_bottom = 616.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.635294, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xsm3t")
+theme_override_font_sizes/font_size = 40
+text = "Back to Main Menu"
+flat = true
+
+[node name="restart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 854.0
+offset_top = 544.0
+offset_right = 1078.0
+offset_bottom = 620.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.635294, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xsm3t")
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+flat = true
+
+[node name="Lobby" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_o10u7")
+
+[node name="Heartbeat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xmlph")
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_v54vb")
+
+[connection signal="mouse_entered" from="bck" to="." method="_on_hovered_button_"]
+[connection signal="pressed" from="bck" to="." method="_on_menu_pressed"]
+[connection signal="mouse_entered" from="restart" to="." method="_on_hovered_button_"]
+[connection signal="pressed" from="restart" to="." method="_on_pressed_restart_"]

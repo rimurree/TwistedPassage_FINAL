@@ -1,7 +1,7 @@
 extends Node3D
 
-@onready var note_label = get_node("/root/" + get_tree().current_scene.name + "/UI/PanelContainer/Label")
-@onready var panel_container = get_node("/root/" + get_tree().current_scene.name + "/UI/PanelContainer")
+@onready var note_label = get_node("/root/" + get_tree().current_scene.name + "/interface/PanelContainer/Label")
+@onready var panel_container = get_node("/root/" + get_tree().current_scene.name + "/interface/PanelContainer")
 
 var is_note_visible = false  # Tracks if a note is being displayed
 

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://r6cgl2pqdxly"]
+
+[ext_resource type="Script" path="res://map_a/scripts/exit.gd" id="1_8p42x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a5ysy"]
+shading_mode = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_uimk7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m5eyk"]
+
+[node name="EXIT" type="Area3D"]
+script = ExtResource("1_8p42x")
+scene_name = "winner"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.18579, 0, 0, 0, 1.64472, 0, 0, 0, 0.323535, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_a5ysy")
+mesh = SubResource("BoxMesh_uimk7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.26607, 0, 0, 0, 1.62698, 0, 0, 0, 0.37691, 0, 0, 0)
+shape = SubResource("BoxShape3D_m5eyk")
+
+[connection signal="body_entered" from="." to="." method="enter_victory"]

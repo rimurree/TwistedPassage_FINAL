@@ -6,12 +6,12 @@ var int_text  # Reference to the interaction UI text
 var pickup_text  # Reference to the interaction UI text
 var total_collectables = null
 
-@onready var collectable_text = get_node('/root/' + get_tree().current_scene.name + '/UI/Collectable' )
+@onready var collectable_text = get_node('/root/' + get_tree().current_scene.name + '/interface/Collectable')
 
 func _ready():
 	Emitter.add_listener('collider_is_colliding', Callable(self, 'collider_is_colliding'))
-	int_text = get_node('/root/' + get_tree().current_scene.name + '/UI/interact_text')
-	pickup_text = get_node('/root/' + get_tree().current_scene.name + '/UI/pickup_text')
+	int_text = get_node('/root/' + get_tree().current_scene.name + '/interface/interact')
+	pickup_text = get_node('/root/' + get_tree().current_scene.name + '/interface/pickup')
 
 func collider_is_colliding(value):
 	if value is Dictionary:

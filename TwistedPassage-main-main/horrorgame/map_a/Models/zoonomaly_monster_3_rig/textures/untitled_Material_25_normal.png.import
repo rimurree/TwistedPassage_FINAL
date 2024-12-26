@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://c140hcfg4wnf1"
+path.s3tc="res://.godot/imported/untitled_Material_25_normal.png-5a4bcb4841a4650288fb534bf2be4fda.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "faa59e42ef1812294534fa3c7d210e25"
+}
+
+[deps]
+
+source_file="res://map_a/Models/zoonomaly_monster_3_rig/textures/untitled_Material_25_normal.png"
+dest_files=["res://.godot/imported/untitled_Material_25_normal.png-5a4bcb4841a4650288fb534bf2be4fda.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Models/zoonomaly_monster_3_rig/textures/untitled_Material_25_normal.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

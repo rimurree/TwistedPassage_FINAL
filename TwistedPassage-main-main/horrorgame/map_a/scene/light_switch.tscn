@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3q0d2aq2h0i"]
+
+[ext_resource type="Script" path="res://map_a/scripts/light_switch.gd" id="1_3dtaf"]
+[ext_resource type="AudioStream" uid="uid://hp7w6477b4g1" path="res://map_a/sounds/light-switch.mp3" id="2_pi3yh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mdw25"]
+size = Vector3(0.138706, 0.212784, 0.215744)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jrjm3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2fdb"]
+albedo_color = Color(1, 0.132595, 0.0927927, 1)
+
+[sub_resource type="Animation" id="Animation_4hwc7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0525018, 0.00166976, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7fg5b"]
+resource_name = "press"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0525018, 0.00166976, 0), Vector3(0.0266703, 0.00166976, 0), Vector3(0.054422, 0.00166976, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v0q0i"]
+_data = {
+"RESET": SubResource("Animation_4hwc7"),
+"press": SubResource("Animation_7fg5b")
+}
+
+[node name="light_switch" type="StaticBody3D"]
+script = ExtResource("1_3dtaf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0153142, -3.8147e-05, 0.00104523)
+shape = SubResource("BoxShape3D_mdw25")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.099039, 0, 0, 0, 0.21354, 0, 0, 0, 0.212872, 0, 0, 0)
+mesh = SubResource("BoxMesh_jrjm3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0619726, 0, 0, 0, 0.111403, 0, 0, 0, 0.101722, 0.0525018, 0.00166976, 0)
+material_override = SubResource("StandardMaterial3D_s2fdb")
+mesh = SubResource("BoxMesh_jrjm3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v0q0i")
+}
+
+[node name="press" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_pi3yh")
+max_distance = 10.0

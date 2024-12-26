@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://vgjr6fa7s1k7"]
+[gd_scene load_steps=7 format=3 uid="uid://vgjr6fa7s1k7"]
 
 [ext_resource type="Script" path="res://main/scripts/maps.gd" id="1_pq1vh"]
 [ext_resource type="Texture2D" uid="uid://du70tkceoowco" path="res://main/textures/logo.png" id="2_dus83"]
 [ext_resource type="FontFile" uid="uid://coben8apb0s5d" path="res://map_b/materials/NoScary-regular.ttf" id="3_ayhuo"]
 [ext_resource type="AudioStream" uid="uid://bep7488gseuoh" path="res://map_b/materials/sounds/lobby.mp3" id="4_77dw6"]
+[ext_resource type="AudioStream" uid="uid://d4cd7rmdi13gi" path="res://map_b/materials/sounds/heartbeat.mp3" id="5_xt6p0"]
+[ext_resource type="AudioStream" uid="uid://daanb5f053xs8" path="res://map_b/materials/sounds/hover.mp3" id="6_ubmmt"]
 
 [node name="Maps" type="Control" node_paths=PackedStringArray("bg_music")]
 layout_mode = 3
@@ -16,11 +18,13 @@ script = ExtResource("1_pq1vh")
 bg_music = NodePath("Lobby")
 
 [node name="background" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 646.0
 color = Color(0, 0, 0, 1)
 
 [node name="logo" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 135.0
 offset_top = 26.0
 offset_right = 1014.0
@@ -29,6 +33,7 @@ texture = ExtResource("2_dus83")
 expand_mode = 3
 
 [node name="red_maze" type="Button" parent="."]
+layout_mode = 0
 offset_left = 459.0
 offset_top = 368.0
 offset_right = 659.0
@@ -40,6 +45,7 @@ theme_override_font_sizes/font_size = 40
 text = "Red Maze"
 
 [node name="office_space" type="Button" parent="."]
+layout_mode = 0
 offset_left = 459.0
 offset_top = 446.0
 offset_right = 659.0
@@ -51,6 +57,7 @@ theme_override_font_sizes/font_size = 40
 text = "Office Space"
 
 [node name="back" type="Button" parent="."]
+layout_mode = 0
 offset_left = 459.0
 offset_top = 523.0
 offset_right = 659.0
@@ -64,6 +71,15 @@ text = "Go back"
 [node name="Lobby" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_77dw6")
 
+[node name="press" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xt6p0")
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ubmmt")
+
+[connection signal="mouse_entered" from="red_maze" to="." method="_on_button_hovered"]
 [connection signal="pressed" from="red_maze" to="." method="level1"]
+[connection signal="mouse_entered" from="office_space" to="." method="_on_button_hovered"]
 [connection signal="pressed" from="office_space" to="." method="level2"]
+[connection signal="mouse_entered" from="back" to="." method="_on_button_hovered"]
 [connection signal="pressed" from="back" to="." method="go_back"]

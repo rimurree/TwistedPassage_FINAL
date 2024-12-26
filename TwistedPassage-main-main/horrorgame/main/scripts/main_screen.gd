@@ -6,7 +6,7 @@ func _ready():
 func level1():
 	$PressSound.play()  # Play press sound
 	bg_music.stop()
-	get_tree().change_scene_to_file("res://map_a/scene/main_menu.tscn")
+	get_tree().change_scene_to_file("res://map_a/scene/level.tscn")
 	
 func level2():
 	$PressSound.play()  # Play press sound

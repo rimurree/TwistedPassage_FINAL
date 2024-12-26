@@ -38,7 +38,7 @@ func _ready():
 	# Get mouse input
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	CURRENT_SPEED = WALKING_SPEED
-	sprintslider = get_node("/root/" + get_tree().current_scene.name + "/UI/sprintslider")
+	sprintslider = get_node("/root/" + get_tree().current_scene.name + "/interface/sprintslider")
 
 func _process(delta):
 	if CURRENT_SPEED == SPRINTING_SPEED:

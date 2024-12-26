@@ -93,6 +93,7 @@ flat = true
 stream = ExtResource("4_bnkdd")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 12.0
 offset_top = 624.0
 offset_right = 342.0

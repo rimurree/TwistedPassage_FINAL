@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cnaspksp1gwg1"
+path.s3tc="res://.godot/imported/untitled_Doll_baseColor.png-459ed2639ebf49256c222a1726e3e95c.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "2c5fe12cbdf3ce5ce3cc6140932d3cd7"
+}
+
+[deps]
+
+source_file="res://map_a/Models/doll/untitled_Doll_baseColor.png"
+dest_files=["res://.godot/imported/untitled_Doll_baseColor.png-459ed2639ebf49256c222a1726e3e95c.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

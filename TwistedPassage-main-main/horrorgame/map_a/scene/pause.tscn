@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmkemtrcpkfs4"]
+
+[ext_resource type="Script" path="res://map_a/scripts/pause.gd" id="1_rmndq"]
+[ext_resource type="FontFile" uid="uid://c3lvkh2asrhsf" path="res://map_b/materials/Dead Wood.otf" id="2_oxd0x"]
+[ext_resource type="FontFile" uid="uid://coben8apb0s5d" path="res://map_b/materials/NoScary-regular.ttf" id="3_xwco3"]
+
+[node name="pause_menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rmndq")
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 1154.0
+offset_bottom = 646.0
+color = Color(0, 0, 0, 0.211765)
+
+[node name="pause" type="RichTextLabel" parent="."]
+modulate = Color(0.645833, 0.111156, 0.0725789, 1)
+layout_mode = 0
+offset_left = 247.0
+offset_top = 116.0
+offset_right = 1320.0
+offset_bottom = 273.0
+theme_override_fonts/normal_font = ExtResource("2_oxd0x")
+theme_override_font_sizes/normal_font_size = 120
+text = "The game is paused."
+
+[node name="resume_game" type="Button" parent="."]
+modulate = Color(0.635294, 0.0392157, 0, 1)
+layout_mode = 0
+offset_left = 466.0
+offset_top = 330.0
+offset_right = 680.0
+offset_bottom = 412.0
+theme_override_fonts/font = ExtResource("3_xwco3")
+theme_override_font_sizes/font_size = 40
+text = "RESUME"
+
+[node name="back_to_mm" type="Button" parent="."]
+modulate = Color(0.635294, 0.0392157, 0, 1)
+layout_mode = 0
+offset_left = 466.0
+offset_top = 426.0
+offset_right = 680.0
+offset_bottom = 510.0
+theme_override_fonts/font = ExtResource("3_xwco3")
+theme_override_font_sizes/font_size = 40
+text = "Back to Menu"
+
+[node name="exit" type="Button" parent="."]
+modulate = Color(0.635294, 0.0392157, 0, 1)
+layout_mode = 0
+offset_left = 468.0
+offset_top = 524.0
+offset_right = 682.0
+offset_bottom = 606.0
+theme_override_fonts/font = ExtResource("3_xwco3")
+theme_override_font_sizes/font_size = 40
+text = "QUIT GAME"
+
+[connection signal="pressed" from="resume_game" to="." method="resume_game"]
+[connection signal="pressed" from="back_to_mm" to="." method="back_to_main_menu"]
+[connection signal="pressed" from="exit" to="." method="quit"]

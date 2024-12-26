@@ -1,0 +1,72 @@
+[gd_scene load_steps=14 format=3 uid="uid://uolrxkvjn2dc"]
+
+[ext_resource type="Script" path="res://map_a/scripts/monster_run.gd" id="1_8o1wk"]
+[ext_resource type="AudioStream" uid="uid://c6macvb24ifh6" path="res://map_a/sounds/footstep-1.mp3" id="2_hn7t1"]
+[ext_resource type="AudioStream" uid="uid://m74pl2inua6" path="res://map_a/sounds/fuzzy-jumpscare.mp3" id="2_mwwxk"]
+[ext_resource type="AudioStream" uid="uid://v7nch13mwrkg" path="res://map_a/sounds/footstep-2.mp3" id="3_jxkge"]
+[ext_resource type="Script" path="res://map_a/scripts/enemy_raycast.gd" id="3_vtnbw"]
+[ext_resource type="AudioStream" uid="uid://cdo6ex4s088rx" path="res://map_a/sounds/footstep-3.mp3" id="4_fsd6c"]
+[ext_resource type="Script" path="res://map_a/scripts/chase_player.gd" id="4_ova6e"]
+[ext_resource type="AudioStream" uid="uid://qragn21dkcox" path="res://map_a/sounds/footstep-4.mp3" id="5_7vk8l"]
+[ext_resource type="AudioStream" uid="uid://cfbqmut4wws32" path="res://map_a/sounds/footstep-1 (1).mp3" id="6_qpn81"]
+[ext_resource type="AudioStream" uid="uid://dnjjv3c2n656c" path="res://map_a/sounds/scare_run.mp3" id="10_63uul"]
+[ext_resource type="PackedScene" uid="uid://c37moe1gb12tc" path="res://map_a/scene/monster1.tscn" id="11_ygc2t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0uh2u"]
+size = Vector3(0.55583, 2.76069, 1.03032)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4xx6c"]
+
+[node name="monster_run" type="CharacterBody3D" groups=["monster"]]
+transform = Transform3D(-0.999285, 0.037472, -0.00515051, 0.0374512, 0.999291, 0.00406855, 0.00529926, 0.00387275, -0.999978, 0, 1.21467, 0.924426)
+script = ExtResource("1_8o1wk")
+scene_name = "death"
+walk_footsteps = Array[AudioStream]([ExtResource("2_hn7t1"), ExtResource("3_jxkge"), ExtResource("4_fsd6c"), ExtResource("5_7vk8l")])
+sprint_footsteps = Array[AudioStream]([ExtResource("6_qpn81")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.420448, 0.0585377, -0.0260668, -0.0291514, 0.848139, 0.000459059, 0.0329362, 0.00341068, 0.333233, -0.0480705, 0.186491, 1.83876)
+shape = SubResource("BoxShape3D_0uh2u")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+
+[node name="jumpscare" type="Camera3D" parent="."]
+transform = Transform3D(-0.996354, 0.0743332, 0.0418575, 0.0747618, 0.997162, 0.00876901, -0.0410869, 0.0118664, -0.999086, 0.0483578, 0.935128, 0.773098)
+near = 0.105
+
+[node name="OmniLight3D" type="OmniLight3D" parent="jumpscare"]
+layers = 16384
+light_color = Color(0.770833, 0.128021, 0.151029, 1)
+omni_range = 2.0
+
+[node name="jumpscare2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mwwxk")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1.805, 0, -4.38304e-08, -8.29823e-09, -8.14907e-08, -1.805, -1.86265e-09, 1.805, -8.00937e-08, -0.0133225, -0.182836, 1.4527)
+collision_mask = 3
+script = ExtResource("3_vtnbw")
+
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+transform = Transform3D(-14.1048, -0.0738525, -1.4258e-07, -2.43997e-07, 1.49012e-07, 14.105, -0.0738525, 14.1048, -1.52737e-07, -0.0137422, 0.254711, 1.45281)
+collision_mask = 3
+script = ExtResource("4_ova6e")
+
+[node name="footsteps" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(0.999999, 4.12383e-08, -5.54137e-08, -3.678e-09, 0.999999, -1.39698e-09, -1.39698e-09, 4.65661e-10, 1, -0.0128657, -0.706018, 1.04737)
+max_distance = 15.0
+
+[node name="chase_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_63uul")
+
+[node name="monster1" parent="." instance=ExtResource("11_ygc2t")]
+transform = Transform3D(-0.00628348, 0.0417811, -0.999107, 0.0336443, 0.998569, 0.041547, 0.999415, -0.0333531, -0.00768019, -0.0633538, -2.95704, -0.0512111)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.2347, 0.0265387, 9.49304e-05, -0.0271994, 1.20471, -0.000132946, -0.000106926, 0.000139506, 1.13, -0.0078725, -0.00575328, 1.48554)
+visible = false
+mesh = SubResource("CapsuleMesh_4xx6c")
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="pick_new_destination"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="on_navigation_agent_3d_velocity_computed"]

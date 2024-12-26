@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://map_b/scripts/player.gd" id="1_ske10"]
 [ext_resource type="AudioStream" uid="uid://bbekxq3ochwch" path="res://map_b/materials/sounds/footstep-2.mp3" id="3_3w5nn"]
-[ext_resource type="Script" path="res://map_b/scripts/flashlight.gd" id="3_gsojm"]
+[ext_resource type="Script" path="res://map_b/scripts/spotlight.gd" id="3_gsojm"]
 [ext_resource type="AudioStream" uid="uid://c3fm7c2yqsys6" path="res://map_b/materials/sounds/flaslight_sound.mp3" id="4_mivjr"]
 [ext_resource type="AudioStream" uid="uid://ddxvxf5lc4njm" path="res://map_b/materials/sounds/footstep-3.mp3" id="4_wns3k"]
 [ext_resource type="Script" path="res://map_b/scripts/ray_cast_3d.gd" id="4_wub38"]
@@ -44,7 +44,7 @@ mesh = SubResource("CapsuleMesh_vqnp2")
 [node name="head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.590337, -0.141475)
 
-[node name="flashlight" type="SpotLight3D" parent="head"]
+[node name="spotlight" type="SpotLight3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.291002, -0.557168, -0.26002)
 visible = false
 light_energy = 3.0
@@ -54,7 +54,7 @@ spot_angle = 30.0
 spot_angle_attenuation = 2.0
 script = ExtResource("3_gsojm")
 
-[node name="on_off" type="AudioStreamPlayer" parent="head/flashlight"]
+[node name="on_off" type="AudioStreamPlayer" parent="head/spotlight"]
 stream = ExtResource("4_mivjr")
 
 [node name="Camera3D" type="Camera3D" parent="head"]

@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c1yhftm1khdf0"]
+
+[ext_resource type="Texture2D" uid="uid://8itmqs3wv18t" path="res://textures/Horror-Paintings.jpg" id="1_lesee"]
+
+[resource]
+albedo_texture = ExtResource("1_lesee")

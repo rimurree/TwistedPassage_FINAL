@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://belllfgehrmw8"]
+
+[ext_resource type="PackedScene" uid="uid://dn4tknl4hdiqp" path="res://Models/zoonomaly_monster_3_rig/scene.gltf" id="1_j54l1"]
+
+[node name="ghost" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_j54l1")]
+process_mode = 3
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 13.986, 26.7055, 22.6621)

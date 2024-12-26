@@ -1,9 +1,8 @@
-[gd_scene load_steps=81 format=3 uid="uid://crnl7ap8h1dk4"]
+[gd_scene load_steps=80 format=3 uid="uid://crnl7ap8h1dk4"]
 
-[ext_resource type="PackedScene" uid="uid://c31hhjy0g4ehs" path="res://map_b/Walls/scenes/ui.tscn" id="1_a3pgh"]
 [ext_resource type="Script" path="res://map_b/Walls/TestLevel/world.gd" id="1_cjy1q"]
+[ext_resource type="PackedScene" uid="uid://c31hhjy0g4ehs" path="res://map_b/Walls/scenes/interface.tscn" id="2_e1doi"]
 [ext_resource type="PackedScene" uid="uid://u4rhfq1x7jly" path="res://map_b/Walls/scenes/Walls/wall_pillar_a.tscn" id="3_fkjcu"]
-[ext_resource type="PackedScene" uid="uid://dyn47eat6dvnn" path="res://map_b/Walls/Player/flashlight.tscn" id="3_wmvph"]
 [ext_resource type="PackedScene" uid="uid://bjc1vq7oo6fn3" path="res://map_b/Walls/scenes/locked.tscn" id="4_phxab"]
 [ext_resource type="PackedScene" uid="uid://de13jp1tb6lnh" path="res://map_b/Walls/scenes/pause_menu.tscn" id="4_xuign"]
 [ext_resource type="Script" path="res://map_b/Walls/TestLevel/props.gd" id="5_bgmmp"]
@@ -11,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bcy1pk07l63uy" path="res://map_b/Walls/scenes/Props/props_chair.tscn" id="5_pq4bv"]
 [ext_resource type="PackedScene" uid="uid://0cm4utcd310j" path="res://map_b/Walls/scenes/monster_run.tscn" id="5_pxw5q"]
 [ext_resource type="PackedScene" uid="uid://dl0266rjhnkf6" path="res://map_b/Walls/scenes/Props/props_locker.tscn" id="6_vle0g"]
+[ext_resource type="PackedScene" uid="uid://cj128cc7satbs" path="res://map_b/Walls/scenes/spotlight.tscn" id="7_h87vx"]
 [ext_resource type="PackedScene" uid="uid://deqqja0vwb30a" path="res://map_b/Walls/scenes/Debris/debri_debris_stack_3.tscn" id="8_u6dgr"]
 [ext_resource type="PackedScene" uid="uid://clsdqyslr73ew" path="res://map_b/Walls/scenes/Props/props_stool.tscn" id="8_xx567"]
 [ext_resource type="PackedScene" uid="uid://db3gkixugpbvs" path="res://map_b/Walls/Player/player.tscn" id="9_c3a3y"]
@@ -37,7 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://da0yq721xo5n3" path="res://map_b/Walls/scenes/Models/doll/doll.tscn" id="29_b26au"]
 [ext_resource type="PackedScene" uid="uid://b0uxu7qcov1e3" path="res://map_b/Walls/scenes/Walls/wall_door_a.tscn" id="31_hb2t6"]
 [ext_resource type="PackedScene" uid="uid://cvchfx1iai1d5" path="res://map_b/Walls/scenes/Walls/wall_door_snapper.tscn" id="32_0yigd"]
-[ext_resource type="PackedScene" uid="uid://dnthbdwv1se14" path="res://map_b/Walls/scenes/light.tscn" id="37_j3j3m"]
+[ext_resource type="PackedScene" uid="uid://dnthbdwv1se14" path="res://map_b/Walls/scenes/suga.tscn" id="37_j3j3m"]
 [ext_resource type="PackedScene" uid="uid://dh6ppom5f7xtp" path="res://map_b/Walls/scenes/Models/mannequin/mannequin.tscn" id="38_c6igq"]
 [ext_resource type="PackedScene" uid="uid://dgixmt0kj7gjh" path="res://map_b/materials/dead_body/body1.tscn" id="40_kttw7"]
 [ext_resource type="Script" path="res://map_b/scripts/scare.gd" id="41_gvqio"]
@@ -445,14 +445,10 @@ _data = {
 "scare_run1": SubResource("Animation_iwqsu")
 }
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_yil5d"]
-
 [node name="World" type="Node3D"]
 script = ExtResource("1_cjy1q")
 
-[node name="UI" parent="." instance=ExtResource("1_a3pgh")]
-offset_left = 12.0
-offset_right = 12.0
+[node name="interface" parent="." instance=ExtResource("2_e1doi")]
 
 [node name="locked" parent="." instance=ExtResource("4_phxab")]
 
@@ -471,8 +467,8 @@ safe_margin = 0.05
 scene_name = "death_2"
 destinations = [NodePath("../destinations/destination"), NodePath("../destinations/destination2"), NodePath("../destinations/destination3"), NodePath("../destinations/destination4"), NodePath("../destinations/destination5"), NodePath("../destinations/destination6"), NodePath("../destinations/destination7"), NodePath("../destinations/destination8")]
 
-[node name="flashlight" parent="." instance=ExtResource("3_wmvph")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
+[node name="spotlight" parent="." instance=ExtResource("7_h87vx")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 2.17651, 0.955567, 0)
 
 [node name="notes" parent="." instance=ExtResource("5_k88ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76551, 0.926353, 0.393346)
@@ -1158,10 +1154,6 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.56362, 0.0120072, 16.
 
 [node name="blood_pool3" parent="pool_blood" instance=ExtResource("53_s4pls")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.878564, 0.0120072, -19.2109)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7147, 1.38847, -20.812)
-mesh = SubResource("CapsuleMesh_yil5d")
 
 [connection signal="body_entered" from="scare_triggers/scare_trigger4" to="scare_triggers/scare_trigger4" method="trigger_entered"]
 [connection signal="body_entered" from="scare_triggers/scare_trigger3" to="scare_triggers/scare_trigger3" method="trigger_entered"]

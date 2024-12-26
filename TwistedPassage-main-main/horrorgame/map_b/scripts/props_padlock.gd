@@ -1,7 +1,7 @@
 extends MeshInstance3D
 
-@onready var pickup_text = get_node('/root/World/UI/pickup_text')
-@onready var int_text = get_node('/root/World/UI/interact_text')
+@onready var pickup_text = get_node('/root/World/interface/pickup')
+@onready var int_text = get_node('/root/World/interface/interact')
 
 var hit_collider = ''
 

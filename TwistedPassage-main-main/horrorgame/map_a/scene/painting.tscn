@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://cn3nxae8asnnf"]
+
+[ext_resource type="Script" path="res://map_a/scripts/painting.gd" id="1_2qmbe"]
+[ext_resource type="Material" uid="uid://c3l2gve13p5is" path="res://map_a/materials/table.tres" id="2_02rre"]
+[ext_resource type="Texture2D" uid="uid://bd8anvilea12f" path="res://map_a/textures/textured_floor.png" id="3_j4vtb"]
+[ext_resource type="AudioStream" uid="uid://m74pl2inua6" path="res://map_a/sounds/fuzzy-jumpscare.mp3" id="4_1cnfl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6qbxs"]
+size = Vector3(1.0802, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6j63u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fok5"]
+albedo_texture = ExtResource("3_j4vtb")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ik0xh"]
+
+[node name="painting" type="StaticBody3D"]
+script = ExtResource("1_2qmbe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.0954026, 0, 0, 0, 1, 0, 0, 0, 1, 0.00382565, 0, 0)
+shape = SubResource("BoxShape3D_6qbxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0731347, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_02rre")
+mesh = SubResource("BoxMesh_6j63u")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0153759, 0, 0.978318, 0, 0.86938, 0, -0.846996, 0, 0.0177598, 0.0503042, 0, 0)
+material_override = SubResource("StandardMaterial3D_0fok5")
+mesh = SubResource("QuadMesh_ik0xh")
+
+[node name="jumpscare" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_1cnfl")
+max_distance = 10.0

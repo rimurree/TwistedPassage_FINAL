@@ -1,0 +1,11 @@
+Model Information:
+* title:	Horror mask
+* source:	https://sketchfab.com/3d-models/horror-mask-c548becf104644dd802e158848c8f6b4
+* author:	Bulat.Shakirov (https://sketchfab.com/Bulat.Shakirov)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Horror mask" (https://sketchfab.com/3d-models/horror-mask-c548becf104644dd802e158848c8f6b4) by Bulat.Shakirov (https://sketchfab.com/Bulat.Shakirov) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

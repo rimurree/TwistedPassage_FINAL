@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyxabmjusublu"]
+
+[ext_resource type="Script" path="res://map_a/scripts/paper.gd" id="1_3f17w"]
+[ext_resource type="Texture2D" uid="uid://x2fvcd5j0585" path="res://map_a/textures/horrorr.png" id="2_clel1"]
+[ext_resource type="AudioStream" uid="uid://d0rf7s8ebu3o8" path="res://map_a/sounds/paper-collect.mp3" id="2_mq0v5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sdmak"]
+size = Vector3(1.08545, 1, 0.771484)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6817"]
+albedo_texture = ExtResource("2_clel1")
+
+[sub_resource type="QuadMesh" id="QuadMesh_b5fug"]
+
+[node name="paper" type="StaticBody3D"]
+transform = Transform3D(32.4525, 0, 0, 0, 0.956635, 0, 0, 0, 22.7069, 0.00575902, 0, -0.000493601)
+script = ExtResource("1_3f17w")
+paper_ui_texture = ExtResource("2_clel1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.331958, 0, 0, 0, 0.0817906, 0, 0, 2.22045e-16, 0.940324, 0.00105358, 1.2837e-16, -0.0500378)
+shape = SubResource("BoxShape3D_sdmak")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.371579, 0, 0, 0, -3.33101e-08, 1, 0, -0.762047, -4.37114e-08, 0, 0, -0.0542114)
+material_override = SubResource("StandardMaterial3D_s6817")
+mesh = SubResource("QuadMesh_b5fug")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mq0v5")

@@ -1,0 +1,77 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxcc28d0wy8mt"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_eyw2a"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="sprintslider" type="HSlider" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 392.0
+offset_top = 541.0
+offset_right = 766.0
+offset_bottom = 600.0
+theme_override_icons/grabber = SubResource("ImageTexture_eyw2a")
+max_value = 1.0
+step = 0.0
+value = 1.0
+
+[node name="interact_text" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 387.0
+offset_top = 486.0
+offset_right = 778.0
+offset_bottom = 557.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Press [E] to interact"
+
+[node name="object_counter" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 18.0
+offset_right = 97.0
+offset_bottom = 83.0
+theme_override_font_sizes/normal_font_size = 40
+text = "0/8"
+
+[node name="paper" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 382.0
+offset_top = 22.0
+offset_right = 774.0
+offset_bottom = 490.0
+expand_mode = 1
+
+[node name="flashlight" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="flashlight_slider" type="HSlider" parent="flashlight"]
+layout_mode = 0
+offset_left = 972.0
+offset_top = 30.0
+offset_right = 1105.0
+offset_bottom = 89.0
+theme_override_icons/grabber = SubResource("ImageTexture_eyw2a")
+max_value = 1.0
+step = 0.0
+value = 1.0
+
+[node name="flashlight_text" type="RichTextLabel" parent="flashlight"]
+layout_mode = 0
+offset_left = 972.0
+offset_top = 31.0
+offset_right = 1141.0
+offset_bottom = 63.0
+theme_override_font_sizes/normal_font_size = 15
+text = "Flashlight Energy"
